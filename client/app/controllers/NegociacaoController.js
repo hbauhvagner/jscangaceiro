@@ -11,22 +11,17 @@ class NegociacaoController {
   adiciona(event) {
     event.preventDefault();
 
-    let data = new Date(
-      ...this._inputData.value
-      .split('-')
-      .map(function(item, indice) {
-        if(indice == 1) {
-          return item -1;
-        }
-        return item;
-      })
-    )
+    let converter = new DateConverter();
 
-    let negociacao = new Negociacao(this._inputData.value,
+    let data = converter.paraData(this._inputData.value);
+
+    let negociacao = new Negociacao(
+      data,
       Number(this._inputQuantidade.value),
       Number(this._inputValor.value)  
     );
 
-    console.log(negociacao);
+    let diaMesAno = converter.paraTexto(negociacao.data);
+    console.log(diaMesAno);
   }
 }
