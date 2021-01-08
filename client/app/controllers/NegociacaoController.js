@@ -11,17 +11,13 @@ class NegociacaoController {
   adiciona(event) {
     event.preventDefault();
 
-    let converter = new DateConverter();
-
-    let data = converter.paraData(this._inputData.value);
-
     let negociacao = new Negociacao(
-      data,
+      DateConverter.paraData(this._inputData.value),
       Number(this._inputQuantidade.value),
       Number(this._inputValor.value)  
     );
 
-    let diaMesAno = converter.paraTexto(negociacao.data);
+    let diaMesAno = DateConverter.paraTexto(negociacao.data);
     console.log(diaMesAno);
   }
 }
