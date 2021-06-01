@@ -11,8 +11,12 @@ class NegociacaoController {
   adiciona(event) {
     event.preventDefault();
 
-    console.log(this._inputData.value);
-    console.log(parseInt(this._inputQuantidade.value));
-    console.log(parseFloat(this._inputValor.value));
+    let negociacao = new Negociacao(
+      this._inputData.value,
+      parseInt(this._inputQuantidade.value),
+      parseFloat(this._inputValor.value)
+    );
+
+    console.log(negociacao);
   }
 }
